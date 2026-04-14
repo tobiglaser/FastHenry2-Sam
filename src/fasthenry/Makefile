@@ -16,7 +16,7 @@ else
     endif
     ifeq ($(UNAME_S), Darwin)
         # macOS-specific settings
-        CC := /opt/homebrew/Cellar/gcc/14.2.0_1/bin/gcc-14  # Replace if necessary
+        CC := /opt/homebrew/bin/gcc-14  # Replace if necessary
         CFLAGS += -DMACOS
     endif
 endif
