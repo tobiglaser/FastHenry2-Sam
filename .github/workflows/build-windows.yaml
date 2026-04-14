@@ -22,8 +22,6 @@ jobs:
         run: |
           echo 'Running in MSYS2!'
           make fasthenry
-          ls bin
-          mv -v bin/fasthenry bin/fasthenry.exe
       
       - name: Release to GitHub
         uses: softprops/action-gh-release@v3
