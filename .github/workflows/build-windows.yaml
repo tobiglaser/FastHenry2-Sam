@@ -1,0 +1,34 @@
+name: "Build Windows (MSYS2)"
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  msys2-ucrt64:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: make mingw-w64-ucrt-x86_64-gcc
+      - name: Build
+        run: |
+          echo 'Running in MSYS2!'
+          make fasthenry
+          ls bin
+          mv -v bin/fasthenry bin/fasthenry.exe
+      
+      - name: Release to GitHub
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            bin/fasthenry.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
