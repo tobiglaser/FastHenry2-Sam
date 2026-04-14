@@ -22,7 +22,7 @@ jobs:
         run: |
           echo 'Running in MSYS2!'
           make fasthenry
-          zip fasthenry-Windows.zip -v bin/fasthenry.exe
+          zip fasthenry-Windows.zip -vj bin/fasthenry.exe
       
       - name: Release to GitHub
         uses: softprops/action-gh-release@v3

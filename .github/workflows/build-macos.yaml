@@ -16,7 +16,7 @@ jobs:
         run: |
           make fasthenry
           ls bin
-          zip fasthenry-macOS.zip -v bin/fasthenry
+          zip fasthenry-macOS.zip -vj bin/fasthenry
 
       
       - name: Release to GitHub
