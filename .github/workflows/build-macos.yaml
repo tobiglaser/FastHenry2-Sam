@@ -1,0 +1,27 @@
+name: "Build MacOS"
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      
+      - name: Build
+        run: |
+          brew install gcc@14
+          make fasthenry
+          ls bin
+          
+      
+      - name: Release to GitHub
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            bin/fasthenry
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
