@@ -14,11 +14,12 @@ jobs:
       - name: Build
         run: |
           make fasthenry
+          zip fasthenry-Linux.zip -v bin/fasthenry
       
       - name: Release to GitHub
         uses: softprops/action-gh-release@v3
         with:
           files: |
-            bin/fasthenry
+            fasthenry-Linux.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
