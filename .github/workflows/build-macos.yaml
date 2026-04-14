@@ -5,7 +5,7 @@ on:
       - "*"
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout
@@ -16,7 +16,7 @@ jobs:
           brew install gcc@14
           make fasthenry
           ls bin
-          
+
       
       - name: Release to GitHub
         uses: softprops/action-gh-release@v3
